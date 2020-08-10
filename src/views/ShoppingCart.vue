@@ -190,7 +190,7 @@ data() {
     paid() {
       let productIds = this.keranjang.map(item => {
         return item.id;
-      });
+    },
         
     // fungsi mengirim data ke API
     checkout() {
