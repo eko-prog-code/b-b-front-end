@@ -45,10 +45,10 @@
                           <h5>{{ keranjang.name }}</h5>
                         </td>
                         <td class="p-price first-row">Rp{{ keranjang.price }}</td>
-                        <td class="delete-item">
-                           <a href="#" v-on:click="removeItemKeranjang(item.id)">
-                              <i class="material-icons">close</i>
-                           </a>
+                         <td @click="removeItem(keranjang.id)" class="delete-item">
+                          <a href="#">
+                            <i class="material-icons">close</i>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
@@ -177,19 +177,20 @@ data() {
     };
   },
   methods: {
-     removeItemKeranjang(idP) {
-      let isi = this.keranjang.map(isi => isi.id);
-      let index = isi.findIndex(id => id === idP);
-      this.keranjang.splice(index, 1);
-      this.saveKeranjang();
-    },
-    saveKeranjang() {
-      const parsed = JSON.stringify(this.keranjang);
-      localStorage.setItem("keranjang", parsed);
-    },
-    paid() {
-      let productIds = this.keranjang.map(item => {
-        return item.id;
+     removeItem(id) {
+      // this.keranjangUser.splice(index, 1);
+      // const parsed = JSON.stringify(this.keranjangUser);
+      // localStorage.setItem("keranjangUser", parsed);
+      // window.location.reload();
+      let faveGifs = JSON.parse(localStorage.getItem("keranjangUser"));
+      let faveGif = faveGifs.map(faveGif => faveGif.id);
+      let index = faveGif.findIndex(id => id == xx);
+      this.keranjangUser.splice(index, 1);
+      const parsed = JSON.stringify(this.keranjangUser);
+      localStorage.setItem("keranjangUser", parsed);
+      window.location.reload();
+      // eslint-disable-next-line no-console
+      console.log(index);
     },
         
     // fungsi mengirim data ke API
