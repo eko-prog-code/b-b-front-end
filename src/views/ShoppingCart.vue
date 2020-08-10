@@ -45,10 +45,10 @@
                           <h5>{{ keranjang.name }}</h5>
                         </td>
                         <td class="p-price first-row">Rp{{ keranjang.price }}</td>
-                        <td @click="removeItem(keranjangUser.id)" class="delete-item">
-                          <a href="#">
-                            <i class="material-icons">close</i>
-                          </a>
+                        <td class="delete-item">
+                           <a href="#" v-on:click="removeItem(index)">
+                              <i class="material-icons">close</i>
+                           </a>
                         </td>
                       </tr>
                     </tbody>
@@ -177,19 +177,12 @@ data() {
     };
   },
   methods: {
-    removeItem(idx) {
-      //cari tau id dari si item yang akan di hapus
-      let keranjangUserStorage = JSON.parse(localStorage.getItem("keranjangUser"));
-      let itemKeranjangUserStorage = keranjangUserStorage.map(itemKeranjangUserStorage => itemKeranjangUserStorage.id);
-
-      //cocockan idx item dengan id yang ada di storage
-      let index =itemKeranjangUserStorage.findIndex(id => id ==idx);
-      this.keranjangUser.splice(index, 1);
-
-      const parsed = JSON.stringify(this.keranjangUser);
-      localStorage.setItem("keranjangUser", parsed);
-      window.location.reload();
-    },
+    removeItem(index) {
+            this.userCart.splice(index, 1);
+            const parsed = JSON.stringify(this.userCart);
+            localStorage.setItem("userCart", parsed);
+        },
+        
     // fungsi mengirim data ke API
     checkout() {
       let productIds = this.keranjangUser.map(function(product) {
