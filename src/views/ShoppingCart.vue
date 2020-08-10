@@ -46,7 +46,7 @@
                         </td>
                         <td class="p-price first-row">Rp{{ keranjang.price }}</td>
                         <td class="delete-item">
-                           <a href="#" v-on:click="removeItem(index)">
+                           <a href="#" v-on:click="removeItemKeranjang(item.id)">
                               <i class="material-icons">close</i>
                            </a>
                         </td>
@@ -177,11 +177,20 @@ data() {
     };
   },
   methods: {
-    removeItem(index) {
-            this.userCart.splice(index, 1);
-            const parsed = JSON.stringify(this.userCart);
-            localStorage.setItem("userCart", parsed);
-        },
+     removeItemKeranjang(idP) {
+      let isi = this.keranjang.map(isi => isi.id);
+      let index = isi.findIndex(id => id === idP);
+      this.keranjang.splice(index, 1);
+      this.saveKeranjang();
+    },
+    saveKeranjang() {
+      const parsed = JSON.stringify(this.keranjang);
+      localStorage.setItem("keranjang", parsed);
+    },
+    paid() {
+      let productIds = this.keranjang.map(item => {
+        return item.id;
+      });
         
     // fungsi mengirim data ke API
     checkout() {
