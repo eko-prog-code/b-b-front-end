@@ -177,7 +177,7 @@ data() {
     };
   },
   methods: {
-     removeItem(id) {
+     removeItem(xx) {
       // this.keranjangUser.splice(index, 1);
       // const parsed = JSON.stringify(this.keranjangUser);
       // localStorage.setItem("keranjangUser", parsed);
