@@ -139,6 +139,18 @@
                       Nama Penerima
                       <span>EKO SETIAJI</span>
                     </li>
+                    <li class="subtotal mt-3">
+                      Bank Transfer
+                      <span>BCA</span>
+                    </li>
+                    <li class="subtotal mt-3">
+                      No. Rekening
+                      <span>252 117 2250 </span>
+                    </li>
+                    <li class="subtotal mt-3">
+                      Nama Penerima
+                      <span>RUTH ANGGRAENI</span>
+                    </li>
                   </ul>
                   <!-- <router-link to="/success"> -->
                     <a @click="checkout()" href="#" class="proceed-btn">SAYA SUDAH MEMBAYAR</a>
